@@ -13,11 +13,6 @@ jobs:
         run: |
           eval `ssh-agent`
           ssh-add - <<< '${{ secrets.CAVE_PRIVATE_KEY }}'
-          ssh-add -L
-          ssh -o StrictHostKeyChecking=no -vvv ${{ secrets.CAVE_USERNAME }}@${{ secrets.CAVE_HOST }} whoami
-      # - uses: appleboy/ssh-action@v0.0.2
-      #   with:
-      #     host: '${{ secrets.CAVE_HOST }}'
-      #     username: '${{ secrets.CAVE_USERNAME }}'
-      #     key: '${{ secrets.CAVE_PRIVATE_KEY }}'
-      #     script: whoami
+          ssh -o StrictHostKeyChecking=no ${{ secrets.CAVE_USERNAME }}@${{ secrets.CAVE_HOST }} <<EOF
+          ls -l /
+          EOF
