@@ -17,6 +17,6 @@ jobs:
             cd /home/app/repo
             git pull
             cd deploy
-            docker-compose up
+            docker-compose -p x up
           EOF
 

@@ -1,6 +1,8 @@
 version: '3'
 services:
-  simplepwa:
-    build: .
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
     ports:
       - '80:80'
