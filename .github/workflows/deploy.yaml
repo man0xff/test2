@@ -15,6 +15,8 @@ jobs:
           ssh-add - <<< '${{ secrets.CAVE_KEY }}'
           ssh -o StrictHostKeyChecking=no app@${{ secrets.CAVE_HOST }} <<EOF
             cd /home/app/repo
+            git reset --hard
+            git checkout simplepwa
             git pull
             cd deploy
             docker-compose -p x up -d
