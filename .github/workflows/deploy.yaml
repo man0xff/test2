@@ -19,6 +19,6 @@ jobs:
             git checkout simplepwa
             git pull
             cd deploy
-            docker-compose -p x up -d
+            docker-compose -p x up --force-recreate -d
           EOF
 
