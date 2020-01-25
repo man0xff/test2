@@ -1,0 +1,19 @@
+name: deploy
+
+on:
+  push:
+    branches: 
+      - simplepwa
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v0.0.2
+        with:
+          host: ${{ secrets.CAVE_HOST }}
+          username: ${{ secrets.CAVE_USERNAME }}
+          key: ${{ secrets.CAVE_PRIVATE_KEY }}
+          script: |
+            whoami
+            docker-compose status
