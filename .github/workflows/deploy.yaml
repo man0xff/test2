@@ -13,7 +13,7 @@ jobs:
         run: |
           eval `ssh-agent`
           ssh-add - <<< '${{ secrets.CAVE_KEY }}'
-          ssh -o StrictHostKeyChecking=no app@${{ secrets.CAVE_HOST }} <<EOF
+          ssh -o StrictHostKeyChecking=no -vvv app@${{ secrets.CAVE_HOST }} <<EOF
             cd /home/app/repo
             git pull
             cd deploy
