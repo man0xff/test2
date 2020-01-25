@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: run ssh
         run: |
-          eval $(ssh-agent)
+          echo eval `ssh-agent`
           ssh-add - <<< '${{ secrets.CAVE_PRIVATE_KEY }}'
           ssh ${{ secrets.CAVE_USERNAME }}@${{ secrets.CAVE_HOST }} whoami
       # - uses: appleboy/ssh-action@v0.0.2
