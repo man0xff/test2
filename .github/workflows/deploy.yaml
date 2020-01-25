@@ -14,7 +14,7 @@ jobs:
           eval `ssh-agent`
           ssh-add - <<< '${{ secrets.CAVE_PRIVATE_KEY }}'
           ssh-add -L
-          ssh ${{ secrets.CAVE_USERNAME }}@${{ secrets.CAVE_HOST }} whoami
+          ssh -vvv ${{ secrets.CAVE_USERNAME }}@${{ secrets.CAVE_HOST }} whoami
       # - uses: appleboy/ssh-action@v0.0.2
       #   with:
       #     host: '${{ secrets.CAVE_HOST }}'
