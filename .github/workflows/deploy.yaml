@@ -12,7 +12,11 @@ jobs:
       - name: run ssh
         run: |
           eval `ssh-agent`
-          ssh-add - <<< '${{ secrets.CAVE_PRIVATE_KEY }}'
-          ssh -o StrictHostKeyChecking=no ${{ secrets.CAVE_USERNAME }}@${{ secrets.CAVE_HOST }} <<EOF
-          ls -l /
+          ssh-add - <<< '${{ secrets.CAVE_KEY }}'
+          ssh -o StrictHostKeyChecking=no app@${{ secrets.CAVE_HOST }} <<EOF
+            cd /home/app/repo
+            git pull
+            cd deploy
+            docker-compose up
           EOF
+
